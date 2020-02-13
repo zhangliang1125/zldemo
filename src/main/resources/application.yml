@@ -1,0 +1,54 @@
+server:
+  port: 8888
+  tomcat:
+    max-connections: 20000
+    max-threads: 1000
+shard:
+  num:
+    some:
+      table: 2
+spring:
+  application:
+    name: my-demo
+  data:
+    redis:
+      repositories:
+        enabled: false
+  datasource:
+    master:
+      hikari:
+        connection-test-query: select 1
+        connection-timeout: 30000
+        data-source-properties:
+          cachePrepStmts: true
+          prepStmtCacheSize: 250
+          prepStmtCacheSqlLimit: 2048
+          useServerPrepStmts: true
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        idle-timeout: 120000
+        jdbc-url: jdbc:mysql://127.0.1:3306/demo-mysql?useUnicode=true&characterEncoding=UTF8&serverTimezone=GMT%2B8
+        max-lifetime: 600000
+        maximum-pool-size: 10
+        minimum-idle: 1
+        password: 123456
+        pool-name: DS0HikariCP
+        username: root
+    slaver:
+      hikari:
+        connection-test-query: select 1
+        connection-timeout: 30000
+        data-source-properties:
+          cachePrepStmts: true
+          prepStmtCacheSize: 250
+          prepStmtCacheSqlLimit: 2048
+          useServerPrepStmts: true
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        idle-timeout: 120000
+        jdbc-url: jdbc:mysql://127.0.1:3306/demo-mysql?&useUnicode=true&characterEncoding=UTF8&serverTimezone=GMT%2B8
+        max-lifetime: 600000
+        maximum-pool-size: 10
+        minimum-idle: 1
+        password: 123456
+        pool-name: DS1HikariCP
+        username: root
+
